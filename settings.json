@@ -1,0 +1,11 @@
+[
+    {
+        "channel": "CHANNELTOJOIN",
+        "username": "YOURUSERNAME",
+        "oauth": "oauth:YOUROAUTHTOKEN",
+        "commandA": "COMMANDA",
+        "commandB": "COMMANDB",
+        "keyWord": "KEYWORD"
+    }
+
+]    
