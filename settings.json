@@ -5,7 +5,7 @@
         "oauth": "oauth:YOUROAUTHTOKEN",
         "commandA": "COMMANDA",
         "commandB": "COMMANDB",
-        "keyWord": "KEYWORD"
+        "keyWord": ["cheer", "bday" , "failfish", "vohiyo", "pjsalt", "trihard", "4head", "notlikethis", "mrdestructoid", "swiftrage", "muxy","bitboss", "doodlecheer", "kappa","kreygasm","streamlabs","bitboss"]
     }
 
 ]    
