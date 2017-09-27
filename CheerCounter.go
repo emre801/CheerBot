@@ -142,7 +142,7 @@ func goBotGo(page Page, score Score) {
 				score.A = pink
 				json := "[" + toString(score) + "]"
 				ioutil.WriteFile("score.json", []byte(json), 0644)
-				fmt.Println(" Pink : " + pinkString +  " Purple : " + purpleString + "\r\n")
+				fmt.Println(" " + page.CommandA + "  : " + pinkString +  " " + page.CommandB + " : " + purpleString + "\r\n")
 				//conn.Write([]byte("PRIVMSG #"+page.Channel +  " :" + "Pink: " + pinkString +  " Purple: " + purpleString+ "\r\n"))
 				continue
 			} 
