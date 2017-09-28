@@ -124,11 +124,11 @@ func goBotGo(page Page, score Score, win *pixelgl.Window) {
 	defer conn.Close()
 
 	tp := textproto.NewReader(bufio.NewReader(conn))
-	fmt.Println(strconv.Itoa(score.A))
-	fmt.Println(strconv.Itoa(score.B))
+	fmt.Println("Score A : " + strconv.Itoa(score.A))
+	fmt.Println("Score B : " + strconv.Itoa(score.B))
 	scoreA := score.A
 	scoreB := score.B
-	i = pink
+	i = scoreB
 	j = scoreA
 
 	for !win.Closed() {
@@ -152,7 +152,9 @@ func goBotGo(page Page, score Score, win *pixelgl.Window) {
 
 			cheer := countCheers(strings.Split(msg, ":")[2], page)
 			fmt.Println(strings.Split(msg, ":")[2])
-			fmt.Println(cheer)
+			fmt.Println("Cheer: " + strconv.Itoa(cheer))
+			fmt.Println(scoreB)
+			fmt.Println(scoreA)
 			if cheer > 0 {
 				scoreB += cheer
 			} else if cheer < 0 {
@@ -169,15 +171,15 @@ func goBotGo(page Page, score Score, win *pixelgl.Window) {
 
 func outputScore(scoreB int, scoreA int, conn net.Conn, score Score, page Page) {
 	scoreAString := strconv.Itoa(scoreA)
-	scoreBString := strconv.Itoa(scoreA)
-	score.B = scoreA
+	scoreBString := strconv.Itoa(scoreB)
+	score.B = scoreB
 	score.A = scoreA
 	json := "[" + toString(score) + "]"
 	ioutil.WriteFile("score.json", []byte(json), 0644)
-	i = scoreA
+	i = scoreB
 	j = scoreA
-	fmt.Println(" " + page.CommandA + "  : " + scoreAString + " " + page.CommandB + " : " + scoreBString + "\r\n")
-	conn.Write([]byte("PRIVMSG #" + page.Channel + " :" + "Pink: " + scoreAString + " Purple: " + scoreBString + "\r\n"))
+	fmt.Println(" " + page.CommandA + "  : " + scoreBString + " " + page.CommandB + " : " + scoreAString + "\r\n")
+	conn.Write([]byte("PRIVMSG #" + page.Channel + " :" + "Pink: " + scoreBString + " Purple: " + scoreAString + "\r\n"))
 }
 
 func run() {
