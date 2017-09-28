@@ -167,17 +167,17 @@ func goBotGo(page Page, score Score, win *pixelgl.Window) {
 	}
 }
 
-func outputScore(pink int, purple int, conn net.Conn, score Score, page Page) {
-	pinkString := strconv.Itoa(pink)
-	purpleString := strconv.Itoa(purple)
-	score.B = pink
-	score.A = purple
+func outputScore(scoreB int, scoreA int, conn net.Conn, score Score, page Page) {
+	scoreAString := strconv.Itoa(scoreA)
+	scoreBString := strconv.Itoa(scoreA)
+	score.B = scoreA
+	score.A = scoreA
 	json := "[" + toString(score) + "]"
 	ioutil.WriteFile("score.json", []byte(json), 0644)
-	i = pink
-	j = purple
-	fmt.Println(" " + page.CommandA + "  : " + pinkString + " " + page.CommandB + " : " + purpleString + "\r\n")
-	conn.Write([]byte("PRIVMSG #" + page.Channel + " :" + "Pink: " + pinkString + " Purple: " + purpleString + "\r\n"))
+	i = scoreA
+	j = scoreA
+	fmt.Println(" " + page.CommandA + "  : " + scoreAString + " " + page.CommandB + " : " + scoreBString + "\r\n")
+	conn.Write([]byte("PRIVMSG #" + page.Channel + " :" + "Pink: " + scoreAString + " Purple: " + scoreBString + "\r\n"))
 }
 
 func run() {
